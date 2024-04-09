@@ -30,6 +30,7 @@ public class TextEditor {
             try (FileWriter writer = new FileWriter(fileName)) {
                 writer.write(textArea.getText());
                 JOptionPane.showMessageDialog(frame, "Archivo guardado con éxito.");
+                frame.dispose(); // Cierra la ventana del editor de texto
             } catch (IOException e) {
                 JOptionPane.showMessageDialog(frame, "Error al guardar el archivo.");
                 e.printStackTrace();
