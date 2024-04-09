@@ -7,12 +7,15 @@ import java.awt.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 public class TextEditor {
     private JFrame frame;
     private JTextArea textArea;
     private JScrollPane scrollPane; // Agregar un JScrollPane
     private File currentFile; // Variable para almacenar el archivo actual
+    private JLabel wordCountLabel; // Etiqueta para mostrar el conteo de palabras
 
     public TextEditor() {
         frame = new JFrame("Editor de Texto");
@@ -60,6 +63,21 @@ public class TextEditor {
         });
         buttonPanel.add(exitButton);
 
+        wordCountLabel = new JLabel();
+        buttonPanel.add(wordCountLabel);
+
+        textArea.getDocument().addDocumentListener(new DocumentListener() {
+            public void insertUpdate(DocumentEvent e) {
+                updateWordCount();
+            }
+            public void removeUpdate(DocumentEvent e) {
+                updateWordCount();
+            }
+            public void changedUpdate(DocumentEvent e) {
+                updateWordCount();
+            }
+        });
+
         frame.setLayout(new BorderLayout());
         frame.add(scrollPane, BorderLayout.CENTER); // Agregar el JScrollPane al frame en lugar de la JTextArea
         frame.add(buttonPanel, BorderLayout.EAST);
@@ -82,5 +100,11 @@ public class TextEditor {
                 e.printStackTrace();
             }
         }
+    }
+
+    private void updateWordCount() {
+        String text = textArea.getText();
+        int wordCount = text.trim().isEmpty() ? 0 : text.trim().split("\\s+").length;
+        wordCountLabel.setText("Conteo de palabras: " + wordCount);
     }
 }
