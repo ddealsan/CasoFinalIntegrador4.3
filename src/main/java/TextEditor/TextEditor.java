@@ -19,7 +19,7 @@ public class TextEditor {
         frame.setLayout(new BorderLayout());
         frame.add(textArea, BorderLayout.CENTER);
         frame.add(saveButton, BorderLayout.SOUTH);
-        frame.setSize(400, 300);
+        frame.setSize(1200, 600); // Cambiado para que coincida con el tamaño de la ventana principal
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setVisible(true);
     }
