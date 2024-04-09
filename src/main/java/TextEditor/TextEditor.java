@@ -10,11 +10,14 @@ import java.io.IOException;
 public class TextEditor {
     private JFrame frame;
     private JTextArea textArea;
+    private JScrollPane scrollPane; // Agregar un JScrollPane
     private String fileName; // Variable para almacenar el nombre del archivo
 
     public TextEditor() {
         frame = new JFrame("Editor de Texto");
         textArea = new JTextArea();
+
+        scrollPane = new JScrollPane(textArea); // Inicializar el JScrollPane con textArea
 
         JPanel buttonPanel = new JPanel(new GridLayout(6, 1, 5, 5)); // GridLayout con 6 filas, 1 columna y 5 de separación horizontal y vertical
 
@@ -57,7 +60,7 @@ public class TextEditor {
         buttonPanel.add(exitButton);
 
         frame.setLayout(new BorderLayout());
-        frame.add(textArea, BorderLayout.CENTER);
+        frame.add(scrollPane, BorderLayout.CENTER); // Agregar el JScrollPane al frame en lugar de la JTextArea
         frame.add(buttonPanel, BorderLayout.EAST);
         frame.setSize(1200, 600);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
