@@ -18,24 +18,29 @@ public class WelcomeScreen {
         newButton.addActionListener(e -> new TextEditor());
         newButton.setForeground(Color.WHITE);
         newButton.setBackground(Color.BLUE);
+        newButton.setFont(new Font("Times New Roman", Font.BOLD, 30));
+        newButton.setFocusPainted(false);
 
         JButton editButton = new JButton("Editar texto existente");
         editButton.setPreferredSize(new Dimension(100, 50));
         editButton.addActionListener(e -> new TextEditor2());
         editButton.setForeground(Color.WHITE);
         editButton.setBackground(Color.BLUE);
+        editButton.setFont(new Font("Times New Roman", Font.BOLD, 30));
 
         JButton compareButton = new JButton("Comparador de textos");
         compareButton.setPreferredSize(new Dimension(100, 50));
         compareButton.addActionListener(e -> new TextComparator());
         compareButton.setForeground(Color.WHITE);
         compareButton.setBackground(Color.BLUE);
+        compareButton.setFont(new Font("Times New Roman", Font.BOLD, 30));
 
         JButton exitButton = new JButton("Salir");
         exitButton.setPreferredSize(new Dimension(100, 50));
         exitButton.addActionListener(e -> System.exit(0));
         exitButton.setForeground(Color.WHITE);
         exitButton.setBackground(Color.BLUE);
+        exitButton.setFont(new Font("Times New Roman", Font.BOLD, 30));
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(4, 1, 10, 10));
@@ -49,7 +54,7 @@ public class WelcomeScreen {
 
         JLabel welcomeLabel = new JLabel("<html><div style='text-align: center;'>Bienvenido al sistema de publicaciones de texto de la Universidad Alfonso X El Sabio</div></html>");
         welcomeLabel.setForeground(Color.BLUE);
-        welcomeLabel.setFont(new Font("Times New Roman", Font.BOLD, 20));
+        welcomeLabel.setFont(new Font("Times New Roman", Font.BOLD, 40));
         welcomeLabel.setHorizontalAlignment(JLabel.CENTER);
 
         JPanel leftPanel = new JPanel();
