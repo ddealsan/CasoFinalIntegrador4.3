@@ -49,7 +49,7 @@ public class WelcomeScreen {
 
         JLabel welcomeLabel = new JLabel("<html><div style='text-align: center;'>Bienvenido al sistema de publicaciones de texto de la Universidad Alfonso X El Sabio</div></html>");
         welcomeLabel.setForeground(Color.BLUE);
-        welcomeLabel.setFont(new Font("Fénix", Font.BOLD, 20));
+        welcomeLabel.setFont(new Font("Times New Roman", Font.BOLD, 20));
         welcomeLabel.setHorizontalAlignment(JLabel.CENTER);
 
         JPanel leftPanel = new JPanel();
