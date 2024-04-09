@@ -25,15 +25,24 @@ public class WelcomeScreen {
         JButton exitButton = new JButton("Salir");
         exitButton.addActionListener(e -> System.exit(0));
 
-        JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(4, 1));
-        panel.add(newButton);
-        panel.add(editButton);
-        panel.add(compareButton);
-        panel.add(exitButton);
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new GridLayout(4, 1, 0, 10)); // Espaciado entre botones
+        buttonPanel.add(newButton);
+        buttonPanel.add(editButton);
+        buttonPanel.add(compareButton);
+        buttonPanel.add(exitButton);
 
-        frame.add(panel);
-        frame.setSize(400, 200);
+        // Reemplaza "ruta/a/tu/imagen.jpg" con la ruta a tu imagen
+        ImageIcon imageIcon = new ImageIcon("ruta/a/tu/imagen.jpg");
+        JLabel imageLabel = new JLabel(imageIcon);
+
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new BorderLayout());
+        mainPanel.add(imageLabel, BorderLayout.WEST);
+        mainPanel.add(buttonPanel, BorderLayout.EAST);
+
+        frame.add(mainPanel);
+        frame.setSize(800, 600); // Tamaño de ventana más grande
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
