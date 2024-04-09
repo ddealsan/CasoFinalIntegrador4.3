@@ -18,6 +18,7 @@ public class TextEditor2 {
         textArea = new JTextArea();
 
         JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setCurrentDirectory(new File("./createdFiles")); // Establecer el directorio de los archivos creados
         int result = fileChooser.showOpenDialog(frame);
         if (result == JFileChooser.APPROVE_OPTION) {
             currentFile = fileChooser.getSelectedFile();
