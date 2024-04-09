@@ -19,21 +19,37 @@ public class TextEditor {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
 
+        Dimension buttonSize = new Dimension(100, 30); // Establecer el tamaño preferido para los botones
+
         JButton saveButton = new JButton("Guardar");
         saveButton.addActionListener(e -> saveFile());
+        saveButton.setPreferredSize(buttonSize); // Establecer el tamaño preferido del botón
         buttonPanel.add(saveButton);
-        buttonPanel.add(Box.createVerticalStrut(10)); // Añadir un espacio entre los botones
 
         JButton clearButton = new JButton("Borrar");
         clearButton.addActionListener(e -> textArea.setText(""));
+        clearButton.setPreferredSize(buttonSize); // Establecer el tamaño preferido del botón
         buttonPanel.add(clearButton);
-        buttonPanel.add(Box.createVerticalStrut(10)); // Añadir un espacio entre los botones
+
+        JButton drawingToolButton = new JButton("Herramienta de Dibujo");
+        drawingToolButton.addActionListener(e -> {
+            JFrame drawingFrame = new JFrame("Herramienta de Dibujo");
+            DrawingTool drawingTool = new DrawingTool();
+            drawingFrame.add(drawingTool);
+            drawingFrame.setSize(600, 600);
+            drawingFrame.setVisible(true);
+        });
+        drawingToolButton.setPreferredSize(buttonSize); // Establecer el tamaño preferido del botón
+        buttonPanel.add(drawingToolButton);
+
+        // Añadir un componente de relleno para empujar los botones "Salir" y "Cancelar" hacia la parte inferior
+        buttonPanel.add(Box.createVerticalGlue());
 
         JButton cancelButton = new JButton("Cancelar");
         cancelButton.addActionListener(e -> frame.dispose());
         cancelButton.setBackground(Color.RED); // Cambiar el color del botón a rojo
+        cancelButton.setPreferredSize(buttonSize); // Establecer el tamaño preferido del botón
         buttonPanel.add(cancelButton);
-        buttonPanel.add(Box.createVerticalStrut(10)); // Añadir un espacio entre los botones
 
         JButton exitButton = new JButton("Salir");
         exitButton.addActionListener(e -> {
@@ -45,18 +61,8 @@ public class TextEditor {
                 frame.dispose();
             }
         });
+        exitButton.setPreferredSize(buttonSize); // Establecer el tamaño preferido del botón
         buttonPanel.add(exitButton);
-        buttonPanel.add(Box.createVerticalStrut(10)); // Añadir un espacio entre los botones
-
-        JButton drawingToolButton = new JButton("Herramienta de Dibujo");
-        drawingToolButton.addActionListener(e -> {
-            JFrame drawingFrame = new JFrame("Herramienta de Dibujo");
-            DrawingTool drawingTool = new DrawingTool();
-            drawingFrame.add(drawingTool);
-            drawingFrame.setSize(600, 600);
-            drawingFrame.setVisible(true);
-        });
-        buttonPanel.add(drawingToolButton);
 
         frame.setLayout(new BorderLayout());
         frame.add(textArea, BorderLayout.CENTER);
