@@ -1,10 +1,9 @@
 package org.example;
 
-import TextEditor.TextEditor;
+import WelcomeScreen.WelcomeScreen;
 
 public class Main {
     public static void main(String[] args) {
-        TextEditor editor = new TextEditor();
-
+        WelcomeScreen welcomeScreen = new WelcomeScreen();
     }
 }
