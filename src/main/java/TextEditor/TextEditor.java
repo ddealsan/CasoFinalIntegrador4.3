@@ -13,17 +13,17 @@ import javax.swing.event.DocumentListener;
 public class TextEditor {
     private JFrame frame;
     private JTextArea textArea;
-    private JScrollPane scrollPane; // Agregar un JScrollPane
-    private File currentFile; // Variable para almacenar el archivo actual
-    private JLabel wordCountLabel; // Etiqueta para mostrar el conteo de palabras
+    private JScrollPane scrollPane;
+    private File currentFile;
+    private JLabel wordCountLabel;
 
     public TextEditor() {
         frame = new JFrame("Editor de Texto");
         textArea = new JTextArea();
 
-        scrollPane = new JScrollPane(textArea); // Inicializar el JScrollPane con textArea
+        scrollPane = new JScrollPane(textArea);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(6, 1, 5, 5)); // GridLayout con 6 filas, 1 columna y 5 de separación horizontal y vertical
+        JPanel buttonPanel = new JPanel(new GridLayout(0, 1, 5, 5)); // GridLayout con 1 columna y varias filas
 
         JButton saveButton = new JButton("Guardar");
         saveButton.addActionListener(e -> saveFile());
@@ -43,12 +43,11 @@ public class TextEditor {
         });
         buttonPanel.add(drawingToolButton);
 
-        // Añadir un componente de relleno para empujar los botones "Salir" y "Cancelar" hacia la parte inferior
         buttonPanel.add(Box.createVerticalGlue());
 
         JButton cancelButton = new JButton("Cancelar");
         cancelButton.addActionListener(e -> frame.dispose());
-        cancelButton.setBackground(Color.RED); // Cambiar el color del botón a rojo
+        cancelButton.setBackground(Color.RED);
         buttonPanel.add(cancelButton);
 
         JButton exitButton = new JButton("Salir");
@@ -79,7 +78,7 @@ public class TextEditor {
         });
 
         frame.setLayout(new BorderLayout());
-        frame.add(scrollPane, BorderLayout.CENTER); // Agregar el JScrollPane al frame en lugar de la JTextArea
+        frame.add(scrollPane, BorderLayout.CENTER);
         frame.add(buttonPanel, BorderLayout.EAST);
         frame.setSize(1200, 600);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -88,10 +87,13 @@ public class TextEditor {
 
     private void saveFile() {
         JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setCurrentDirectory(new File("./src/main/resources/txts")); // Establecer el directorio de los archivos creados
+        fileChooser.setCurrentDirectory(new File("./src/main/resources/txts"));
         int result = fileChooser.showSaveDialog(frame);
         if (result == JFileChooser.APPROVE_OPTION) {
             currentFile = fileChooser.getSelectedFile();
+            if (!currentFile.getName().endsWith(".txt")) {
+                currentFile = new File(currentFile.toString() + ".txt");
+            }
             try (FileWriter writer = new FileWriter(currentFile)) {
                 writer.write(textArea.getText());
                 JOptionPane.showMessageDialog(frame, "Archivo guardado con éxito.");
