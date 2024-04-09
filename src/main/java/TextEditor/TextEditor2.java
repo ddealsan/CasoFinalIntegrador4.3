@@ -1,6 +1,7 @@
 package TextEditor;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.io.File;
 import java.io.FileWriter;
@@ -18,7 +19,9 @@ public class TextEditor2 {
         textArea = new JTextArea();
 
         JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setCurrentDirectory(new File("./createdFiles")); // Establecer el directorio de los archivos creados
+        fileChooser.setCurrentDirectory(new File("./target")); // Establecer el directorio de los archivos creados
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos de texto", "txt"); // Filtro para archivos .txt
+        fileChooser.setFileFilter(filter); // Aplicar el filtro al JFileChooser
         int result = fileChooser.showOpenDialog(frame);
         if (result == JFileChooser.APPROVE_OPTION) {
             currentFile = fileChooser.getSelectedFile();
