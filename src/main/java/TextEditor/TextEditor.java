@@ -69,13 +69,11 @@ public class TextEditor {
     }
 
     private void saveFile() {
-        if (currentFile == null) {
-            String fileName = JOptionPane.showInputDialog(frame, "Ingrese el nombre del archivo:");
-            if (fileName != null) {
-                currentFile = new File("./src/main/resources/txts/" + fileName);
-            }
-        }
-        if (currentFile != null) {
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setCurrentDirectory(new File("./src/main/resources/txts")); // Establecer el directorio de los archivos creados
+        int result = fileChooser.showSaveDialog(frame);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            currentFile = fileChooser.getSelectedFile();
             try (FileWriter writer = new FileWriter(currentFile)) {
                 writer.write(textArea.getText());
                 JOptionPane.showMessageDialog(frame, "Archivo guardado con éxito.");
