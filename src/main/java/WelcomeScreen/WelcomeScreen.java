@@ -64,13 +64,13 @@ public class WelcomeScreen {
         leftPanel.setBackground(Color.WHITE);
 
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, leftPanel, buttonPanel);
-        splitPane.setDividerSize(10);
+        splitPane.setDividerSize(15);
         splitPane.setDividerLocation(400);
         splitPane.setEnabled(false);
         splitPane.setForeground(Color.BLUE);
 
         frame.add(splitPane);
-        frame.setSize(800, 600);
+        frame.setSize(1000, 800);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
