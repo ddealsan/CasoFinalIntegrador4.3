@@ -16,14 +16,19 @@ public class TextEditor {
         frame = new JFrame("Editor de Texto");
         textArea = new JTextArea();
 
-        JPanel buttonPanel = new JPanel(new GridLayout(6, 1, 5, 5)); // GridLayout con 6 filas, 1 columna y 5 de separación horizontal y vertical
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
+
+        Dimension buttonSize = new Dimension(100, 100); // Establecer el tamaño preferido para los botones
 
         JButton saveButton = new JButton("Guardar");
         saveButton.addActionListener(e -> saveFile());
+        saveButton.setPreferredSize(buttonSize); // Establecer el tamaño preferido del botón
         buttonPanel.add(saveButton);
 
         JButton clearButton = new JButton("Borrar");
         clearButton.addActionListener(e -> textArea.setText(""));
+        clearButton.setPreferredSize(buttonSize); // Establecer el tamaño preferido del botón
         buttonPanel.add(clearButton);
 
         JButton drawingToolButton = new JButton("Herramienta de Dibujo");
@@ -34,6 +39,7 @@ public class TextEditor {
             drawingFrame.setSize(600, 600);
             drawingFrame.setVisible(true);
         });
+        drawingToolButton.setPreferredSize(buttonSize); // Establecer el tamaño preferido del botón
         buttonPanel.add(drawingToolButton);
 
         // Añadir un componente de relleno para empujar los botones "Salir" y "Cancelar" hacia la parte inferior
@@ -42,6 +48,7 @@ public class TextEditor {
         JButton cancelButton = new JButton("Cancelar");
         cancelButton.addActionListener(e -> frame.dispose());
         cancelButton.setBackground(Color.RED); // Cambiar el color del botón a rojo
+        cancelButton.setPreferredSize(buttonSize); // Establecer el tamaño preferido del botón
         buttonPanel.add(cancelButton);
 
         JButton exitButton = new JButton("Salir");
@@ -54,6 +61,7 @@ public class TextEditor {
                 frame.dispose();
             }
         });
+        exitButton.setPreferredSize(buttonSize); // Establecer el tamaño preferido del botón
         buttonPanel.add(exitButton);
 
         frame.setLayout(new BorderLayout());
