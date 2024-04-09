@@ -14,38 +14,38 @@ public class WelcomeScreen {
     public WelcomeScreen() {
         frame = new JFrame("Gestión de Publicaciones - Alfonso X El Sabio");
 
-        JButton newButton = new JButton("Crear nuevo texto");
-        newButton.setPreferredSize(new Dimension(80, 40));
+        JButton newButton = new JButton("Crear nuevo texto".toUpperCase());
+        newButton.setPreferredSize(new Dimension(60, 25));
         newButton.addActionListener(e -> new TextEditor());
         newButton.setForeground(Color.WHITE);
         newButton.setBackground(Color.BLUE);
-        newButton.setFont(new Font("Times New Roman", Font.BOLD, 30));
+        newButton.setFont(new Font("Times New Roman", Font.BOLD, 20));
         newButton.setFocusPainted(false);
-        newButton.setBorder(new LineBorder(new Color(0, 0, 128), 2));
+        newButton.setBorder(new LineBorder(new Color(0, 0, 128), 3));
 
-        JButton editButton = new JButton("Editar texto existente");
-        editButton.setPreferredSize(new Dimension(80, 40));
+        JButton editButton = new JButton("Editar texto existente".toUpperCase());
+        editButton.setPreferredSize(new Dimension(60, 25));
         editButton.addActionListener(e -> new TextEditor2());
         editButton.setForeground(Color.WHITE);
         editButton.setBackground(Color.BLUE);
-        editButton.setFont(new Font("Times New Roman", Font.BOLD, 30));
-        editButton.setBorder(new LineBorder(new Color(0, 0, 128), 2));
+        editButton.setFont(new Font("Times New Roman", Font.BOLD, 20));
+        editButton.setBorder(new LineBorder(new Color(0, 0, 128), 3));
 
-        JButton compareButton = new JButton("Comparador de textos");
-        compareButton.setPreferredSize(new Dimension(80, 40));
+        JButton compareButton = new JButton("Comparador de textos".toUpperCase());
+        compareButton.setPreferredSize(new Dimension(60, 25));
         compareButton.addActionListener(e -> new TextComparator());
         compareButton.setForeground(Color.WHITE);
         compareButton.setBackground(Color.BLUE);
-        compareButton.setFont(new Font("Times New Roman", Font.BOLD, 30));
-        compareButton.setBorder(new LineBorder(new Color(0, 0, 128), 2));
+        compareButton.setFont(new Font("Times New Roman", Font.BOLD, 20));
+        compareButton.setBorder(new LineBorder(new Color(0, 0, 128), 3));
 
-        JButton exitButton = new JButton("Salir");
-        exitButton.setPreferredSize(new Dimension(80, 40));
+        JButton exitButton = new JButton("Salir".toUpperCase());
+        exitButton.setPreferredSize(new Dimension(60, 25));
         exitButton.addActionListener(e -> System.exit(0));
         exitButton.setForeground(Color.WHITE);
         exitButton.setBackground(Color.BLUE);
-        exitButton.setFont(new Font("Times New Roman", Font.BOLD, 30));
-        exitButton.setBorder(new LineBorder(new Color(0, 0, 128), 2));
+        exitButton.setFont(new Font("Times New Roman", Font.BOLD, 20));
+        exitButton.setBorder(new LineBorder(new Color(0, 0, 128), 3));
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(4, 1, 10, 10));
@@ -59,7 +59,7 @@ public class WelcomeScreen {
 
         JLabel welcomeLabel = new JLabel("<html><div style='text-align: center;'>Bienvenido al sistema de publicaciones de texto de la Universidad Alfonso X El Sabio</div></html>");
         welcomeLabel.setForeground(Color.BLUE);
-        welcomeLabel.setFont(new Font("Times New Roman", Font.BOLD, 40));
+        welcomeLabel.setFont(new Font("Times New Roman", Font.BOLD, 45));
         welcomeLabel.setHorizontalAlignment(JLabel.CENTER);
 
         JPanel leftPanel = new JPanel();
@@ -69,13 +69,13 @@ public class WelcomeScreen {
         leftPanel.setBackground(Color.WHITE);
 
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, leftPanel, buttonPanel);
-        splitPane.setDividerSize(15);
+        splitPane.setDividerSize(20);
         splitPane.setDividerLocation(600);
         splitPane.setEnabled(false);
-        splitPane.setForeground(Color.BLUE);
+        splitPane.setForeground(new Color(0, 0, 128));
 
         frame.add(splitPane);
-        frame.setSize(1200, 800);
+        frame.setSize(1200, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
