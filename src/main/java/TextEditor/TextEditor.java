@@ -4,6 +4,7 @@ import DrawingTool.DrawingTool;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -11,7 +12,7 @@ public class TextEditor {
     private JFrame frame;
     private JTextArea textArea;
     private JScrollPane scrollPane; // Agregar un JScrollPane
-    private String fileName; // Variable para almacenar el nombre del archivo
+    private File currentFile; // Variable para almacenar el archivo actual
 
     public TextEditor() {
         frame = new JFrame("Editor de Texto");
@@ -68,11 +69,14 @@ public class TextEditor {
     }
 
     private void saveFile() {
-        if (fileName == null) {
-            fileName = JOptionPane.showInputDialog(frame, "Ingrese el nombre del archivo:");
+        if (currentFile == null) {
+            String fileName = JOptionPane.showInputDialog(frame, "Ingrese el nombre del archivo:");
+            if (fileName != null) {
+                currentFile = new File("./src/main/resources/txts/" + fileName);
+            }
         }
-        if (fileName != null) {
-            try (FileWriter writer = new FileWriter(fileName)) {
+        if (currentFile != null) {
+            try (FileWriter writer = new FileWriter(currentFile)) {
                 writer.write(textArea.getText());
                 JOptionPane.showMessageDialog(frame, "Archivo guardado con éxito.");
             } catch (IOException e) {
