@@ -8,13 +8,22 @@ import java.awt.event.MouseMotionAdapter;
 public class DrawingTool extends JPanel {
     private Image image;
     private Graphics2D graphics2D;
+    private JLabel mousePositionLabel; // Etiqueta para mostrar la posición del ratón
 
     public DrawingTool() {
         setDoubleBuffered(false);
+        mousePositionLabel = new JLabel(); // Inicializar la etiqueta
+        add(mousePositionLabel); // Agregar la etiqueta al panel
+
         addMouseMotionListener(new MouseMotionAdapter() {
             public void mouseDragged(MouseEvent e) {
                 graphics2D.drawLine(e.getX(), e.getY(), e.getX(), e.getY());
                 repaint();
+            }
+
+            public void mouseMoved(MouseEvent e) {
+                // Actualizar la etiqueta con la posición actual del ratón
+                mousePositionLabel.setText("Posición del ratón: (" + e.getX() + ", " + e.getY() + ")");
             }
         });
     }
