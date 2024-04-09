@@ -14,35 +14,48 @@ public class WelcomeScreen {
         frame = new JFrame("Gestión de Publicaciones - Alfonso X El Sabio");
 
         JButton newButton = new JButton("Crear nuevo texto");
+        newButton.setPreferredSize(new Dimension(100, 50));
         newButton.addActionListener(e -> new TextEditor());
 
         JButton editButton = new JButton("Editar texto existente");
+        editButton.setPreferredSize(new Dimension(100, 50));
         editButton.addActionListener(e -> new TextEditor2());
 
         JButton compareButton = new JButton("Comparador de textos");
+        compareButton.setPreferredSize(new Dimension(100, 50));
         compareButton.addActionListener(e -> new TextComparator());
 
         JButton exitButton = new JButton("Salir");
+        exitButton.setPreferredSize(new Dimension(100, 50));
         exitButton.addActionListener(e -> System.exit(0));
 
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(4, 1, 0, 10)); // Espaciado entre botones
+        buttonPanel.setLayout(new GridLayout(4, 1, 10, 10));
         buttonPanel.add(newButton);
         buttonPanel.add(editButton);
         buttonPanel.add(compareButton);
         buttonPanel.add(exitButton);
 
-        // Reemplaza "ruta/a/tu/imagen.jpg" con la ruta a tu imagen
-        ImageIcon imageIcon = new ImageIcon("ruta/a/tu/imagen.jpg");
+        ImageIcon imageIcon = new ImageIcon(getClass().getResource("/FotoLogo.png"));
         JLabel imageLabel = new JLabel(imageIcon);
 
-        JPanel mainPanel = new JPanel();
-        mainPanel.setLayout(new BorderLayout());
-        mainPanel.add(imageLabel, BorderLayout.WEST);
-        mainPanel.add(buttonPanel, BorderLayout.EAST);
+        JLabel welcomeLabel = new JLabel("<html><div style='text-align: center;'>Bienvenido al sistema de publicaciones de texto de la Universidad Alfonso X El Sabio</div></html>");
+        welcomeLabel.setForeground(Color.BLUE);
+        welcomeLabel.setFont(new Font("Arial", Font.BOLD, 20));
+        welcomeLabel.setHorizontalAlignment(JLabel.CENTER);
 
-        frame.add(mainPanel);
-        frame.setSize(800, 600); // Tamaño de ventana más grande
+        JPanel leftPanel = new JPanel();
+        leftPanel.setLayout(new BorderLayout());
+        leftPanel.add(imageLabel, BorderLayout.CENTER);
+        leftPanel.add(welcomeLabel, BorderLayout.SOUTH);
+
+        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, leftPanel, buttonPanel);
+        splitPane.setDividerSize(10);
+        splitPane.setDividerLocation(400);
+        splitPane.setEnabled(false);
+
+        frame.add(splitPane);
+        frame.setSize(800, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
